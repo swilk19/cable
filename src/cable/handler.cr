@@ -22,7 +22,7 @@ module Cable
         connection = @connection_class.new(context.request, socket)
 
         # Send welcome message to the client
-        socket.send ({type: "welcome"}.to_json)
+        socket.send({type: "welcome"}.to_json)
 
         Cable::WebsocketPinger.build(socket)
 

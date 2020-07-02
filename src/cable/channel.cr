@@ -16,10 +16,8 @@ module Cable
 
     def initialize(@connection : Cable::Connection, @identifier : String, @params : Hash(String, Cable::Payload::RESULT))
       if ENV["REDIS_URL"]?
-        Cable::Logger.info "#{self.class.name} found a redis url, using that. (Channel)"
         @redis = Redis.new(url: ENV["REDIS_URL"])
       else
-        Cable::Logger.info "#{self.class.name} couldnt load a REDIS_URL, using localhost"
         @redis = Redis.new
       end
     end
